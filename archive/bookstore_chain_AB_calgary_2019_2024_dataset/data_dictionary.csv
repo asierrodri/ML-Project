@@ -1,0 +1,58 @@
+file,column,description,dtype
+bookstore_sales.csv,date,Date of sales,date
+bookstore_sales.csv,store_id,Store identifier (YYC-DT/NW/SE),string
+bookstore_sales.csv,channel,Sales channel (IN_STORE/ONLINE),string
+bookstore_sales.csv,transactions,Number of transactions (daily),int
+bookstore_sales.csv,revenue,Gross revenue incl. GST (CAD),float
+bookstore_sales.csv,gst_collected,GST collected at 5% (CAD),float
+bookstore_sales.csv,net_revenue,Net revenue excl. GST (CAD),float
+bookstore_inventory.csv,month,Month of inventory movement,date
+bookstore_inventory.csv,from,Origin (YYC-WH),string
+bookstore_inventory.csv,to,Destination store,string
+bookstore_inventory.csv,sku,Stock keeping unit,string
+bookstore_inventory.csv,qty,Quantity moved,int
+bookstore_inventory.csv,unit_cost,Unit cost (CAD),float
+bookstore_inventory.csv,unit_price,Unit retail price (CAD),float
+bookstore_inventory.csv,extended_cost,qty * unit_cost (CAD),float
+bookstore_inventory.csv,extended_retail,qty * unit_price (CAD),float
+bookstore_employees.csv,employee_id,Unique employee id,int
+bookstore_employees.csv,name,Employee name (synthetic),string
+bookstore_employees.csv,location,Location (store or warehouse),string
+bookstore_employees.csv,role,Job role,string
+bookstore_employees.csv,employment_type,PERM/SEASONAL,string
+bookstore_employees.csv,hourly_rate,Hourly wage (CAD),float
+bookstore_employees.csv,hire_date,Hire date,date
+bookstore_employees.csv,term_date,Termination date (if any),date
+bookstore_payroll.csv,pay_period_start,Start date of biweekly pay period,date
+bookstore_payroll.csv,employee_id,Employee id,int
+bookstore_payroll.csv,hours_biweekly,Hours worked in period,float
+bookstore_payroll.csv,gross_pay,Gross pay (CAD),float
+bookstore_payroll.csv,cpp_withheld,Placeholder CPP deduction (CAD),float
+bookstore_payroll.csv,ei_withheld,Placeholder EI deduction (CAD),float
+bookstore_payroll.csv,income_tax_withheld,Placeholder income tax (CAD),float
+bookstore_payroll.csv,employee_benefits,Employee benefits cost (CAD),float
+bookstore_payroll.csv,net_pay,Net pay (CAD),float
+bookstore_checking.csv,date,Transaction date,date
+bookstore_checking.csv,reference,Bank reference id,string
+bookstore_checking.csv,description,Description/memo,string
+bookstore_checking.csv,deposit,Amount in (CAD),float
+bookstore_checking.csv,withdrawal,Amount out (CAD),float
+bookstore_checking.csv,category,"Category (e.g., Payroll, Rent)",string
+bookstore_checking.csv,entity,Related store/vendor/entity,string
+bookstore_credit.csv,date,Transaction date,date
+bookstore_credit.csv,reference,Card reference id,string
+bookstore_credit.csv,description,Description/memo,string
+bookstore_credit.csv,amount,Charge amount (CAD),float
+bookstore_credit.csv,category,"Category (e.g., Marketing)",string
+bookstore_loans.csv,quarter_end,Quarter end date,date
+bookstore_loans.csv,loan_name,Loan name,string
+bookstore_loans.csv,loan_id,Loan identifier,string
+bookstore_loans.csv,principal_outstanding,Principal outstanding (CAD),float
+bookstore_loans.csv,interest_accrued,Interest accrued this quarter (CAD),float
+bookstore_loans.csv,repayment,Repayment made in quarter (CAD),float
+bookstore_customers.csv,customer_id,Customer id,int
+bookstore_customers.csv,signup_date,Signup date for loyalty,date
+bookstore_customers.csv,home_store,Preferred store,string
+bookstore_customers.csv,annual_visits,Approx visits per year,int
+bookstore_customers.csv,online_ratio,Share of spend online (0–1),float
+bookstore_customers.csv,ltv_estimate,Lifetime value proxy (CAD),float

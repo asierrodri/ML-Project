@@ -1,0 +1,45 @@
+quarter_end,loan_name,loan_id,principal_outstanding,interest_accrued,repayment,dataset
+2020-03-30,Government Relief Loan,GOVT-CEBA,40000.0,0.0,0.0,bookstore_loans
+2020-06-30,Government Relief Loan,GOVT-CEBA,40000.0,0.0,0.0,bookstore_loans
+2020-09-30,Government Relief Loan,GOVT-CEBA,40000.0,0.0,0.0,bookstore_loans
+2020-12-30,Government Relief Loan,GOVT-CEBA,40000.0,0.0,0.0,bookstore_loans
+2021-03-30,Government Relief Loan,GOVT-CEBA,40000.0,0.0,0.0,bookstore_loans
+2021-06-30,Government Relief Loan,GOVT-CEBA,40000.0,0.0,0.0,bookstore_loans
+2021-09-30,Government Relief Loan,GOVT-CEBA,40000.0,0.0,0.0,bookstore_loans
+2021-12-30,Government Relief Loan,GOVT-CEBA,40000.0,0.0,0.0,bookstore_loans
+2022-03-30,Government Relief Loan,GOVT-CEBA,40000.0,250.0,0.0,bookstore_loans
+2022-06-30,Government Relief Loan,GOVT-CEBA,40000.0,250.0,0.0,bookstore_loans
+2022-09-30,Government Relief Loan,GOVT-CEBA,40000.0,250.0,0.0,bookstore_loans
+2022-12-30,Government Relief Loan,GOVT-CEBA,40000.0,250.0,0.0,bookstore_loans
+2023-03-30,Government Relief Loan,GOVT-CEBA,40000.0,250.0,0.0,bookstore_loans
+2023-06-30,Government Relief Loan,GOVT-CEBA,35393.58,250.0,4606.42,bookstore_loans
+2023-09-30,Government Relief Loan,GOVT-CEBA,30612.12,221.21,4781.46,bookstore_loans
+2023-12-30,Government Relief Loan,GOVT-CEBA,30612.12,191.33,0.0,bookstore_loans
+2024-03-30,Government Relief Loan,GOVT-CEBA,25434.12,191.33,5178.0,bookstore_loans
+2024-06-30,Government Relief Loan,GOVT-CEBA,25434.12,158.96,0.0,bookstore_loans
+2024-09-30,Government Relief Loan,GOVT-CEBA,25434.12,158.96,0.0,bookstore_loans
+2024-12-30,Government Relief Loan,GOVT-CEBA,17628.71,158.96,7805.41,bookstore_loans
+2019-03-30,Business Line of Credit,LOC-001,10715.37,187.52,17187.85,bookstore_loans
+2019-06-30,Business Line of Credit,LOC-001,2326.04,40.71,17245.21,bookstore_loans
+2019-09-30,Business Line of Credit,LOC-001,0.0,0.0,19206.88,bookstore_loans
+2019-12-30,Business Line of Credit,LOC-001,0.0,0.0,21753.93,bookstore_loans
+2020-03-30,Business Line of Credit,LOC-001,15393.43,269.39,13342.21,bookstore_loans
+2020-06-30,Business Line of Credit,LOC-001,16722.7,292.65,16802.95,bookstore_loans
+2020-09-30,Business Line of Credit,LOC-001,5512.96,96.48,23546.66,bookstore_loans
+2020-12-30,Business Line of Credit,LOC-001,14702.55,257.29,8336.41,bookstore_loans
+2021-03-30,Business Line of Credit,LOC-001,30099.62,526.74,9383.03,bookstore_loans
+2021-06-30,Business Line of Credit,LOC-001,24999.82,437.5,16257.44,bookstore_loans
+2021-09-30,Business Line of Credit,LOC-001,31381.47,549.18,16391.25,bookstore_loans
+2021-12-30,Business Line of Credit,LOC-001,46514.22,814.0,7310.48,bookstore_loans
+2022-03-30,Business Line of Credit,LOC-001,52846.25,924.81,12140.37,bookstore_loans
+2022-06-30,Business Line of Credit,LOC-001,76267.88,1334.69,5992.48,bookstore_loans
+2022-09-30,Business Line of Credit,LOC-001,66993.11,1172.38,23837.24,bookstore_loans
+2022-12-30,Business Line of Credit,LOC-001,75132.0,1314.81,21498.03,bookstore_loans
+2023-03-30,Business Line of Credit,LOC-001,68576.86,1200.1,16227.1,bookstore_loans
+2023-06-30,Business Line of Credit,LOC-001,64250.52,1124.38,21129.05,bookstore_loans
+2023-09-30,Business Line of Credit,LOC-001,64518.47,1129.07,8942.58,bookstore_loans
+2023-12-30,Business Line of Credit,LOC-001,75127.81,1314.74,8152.95,bookstore_loans
+2024-03-30,Business Line of Credit,LOC-001,76952.2,1346.66,21415.34,bookstore_loans
+2024-06-30,Business Line of Credit,LOC-001,86645.97,1516.3,13805.67,bookstore_loans
+2024-09-30,Business Line of Credit,LOC-001,106216.78,1858.79,7753.72,bookstore_loans
+2024-12-30,Business Line of Credit,LOC-001,105153.44,1840.19,14790.79,bookstore_loans

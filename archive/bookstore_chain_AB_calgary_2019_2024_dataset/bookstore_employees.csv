@@ -1,0 +1,176 @@
+employee_id,name,location,role,employment_type,hourly_rate,hire_date,term_date,dataset
+1001,Harper Brown,YYC-DT,Store Manager,PERM,27.49,2019-10-30,,bookstore_employees
+1002,Alex Foster,YYC-DT,Assistant Manager,PERM,23.84,2021-12-30,,bookstore_employees
+1003,Quinn Roy,YYC-DT,Assistant Manager,PERM,21.28,2018-12-04,2020-05-05,bookstore_employees
+1004,Riley Li,YYC-DT,Bookseller,PERM,17.21,2023-02-21,,bookstore_employees
+1005,Sage Brown,YYC-DT,Bookseller,PERM,21.7,2021-06-30,,bookstore_employees
+1006,Jessie Foster,YYC-DT,Bookseller,PERM,20.9,2022-12-07,,bookstore_employees
+1007,Elliot Smith,YYC-DT,Bookseller,PERM,21.68,2021-02-02,,bookstore_employees
+1008,Spencer Patel,YYC-DT,Bookseller,PERM,18.9,2023-09-22,,bookstore_employees
+1009,Sam Nguyen,YYC-DT,Bookseller,PERM,18.45,2022-09-16,,bookstore_employees
+1010,Taylor Martin,YYC-DT,Seasonal Associate,SEASONAL,16.46,,,bookstore_employees
+1011,Riley Hughes,YYC-DT,Seasonal Associate,SEASONAL,16.61,,,bookstore_employees
+1012,Robin Nguyen,YYC-DT,Seasonal Associate,SEASONAL,17.36,,,bookstore_employees
+1013,Elliot Martin,YYC-DT,Seasonal Associate,SEASONAL,17.78,,,bookstore_employees
+1014,Skyler Adams,YYC-DT,Seasonal Associate,SEASONAL,17.35,,,bookstore_employees
+1015,Skyler Gagnon,YYC-DT,Seasonal Associate,SEASONAL,17.66,,,bookstore_employees
+1016,Reese Roy,YYC-DT,Warehouse Clerk,PERM,20.17,2018-11-07,2020-07-22,bookstore_employees
+1017,Brooklyn White,YYC-DT,Warehouse Clerk,PERM,19.31,2019-10-24,,bookstore_employees
+1018,Quinn Nguyen,YYC-DT,E‑Commerce Specialist,PERM,26.33,2020-11-07,,bookstore_employees
+1019,Avery Campbell,YYC-NW,Store Manager,PERM,32.17,2023-01-26,,bookstore_employees
+1020,Reese Turner,YYC-NW,Assistant Manager,PERM,22.77,2022-07-01,,bookstore_employees
+1021,Quinn Li,YYC-NW,Bookseller,PERM,19.9,2023-06-01,,bookstore_employees
+1022,Casey Gordon,YYC-NW,Bookseller,PERM,19.95,2018-10-07,,bookstore_employees
+1023,Hayden Brown,YYC-NW,Bookseller,PERM,21.0,2023-12-02,,bookstore_employees
+1024,Taylor Chen,YYC-NW,Bookseller,PERM,17.93,2018-08-11,,bookstore_employees
+1025,Jordan Pereira,YYC-NW,Bookseller,PERM,18.98,2020-02-01,,bookstore_employees
+1026,Parker Young,YYC-NW,Seasonal Associate,SEASONAL,16.84,,,bookstore_employees
+1027,Quinn Singh,YYC-NW,Seasonal Associate,SEASONAL,17.3,,,bookstore_employees
+1028,Sage Thompson,YYC-NW,Seasonal Associate,SEASONAL,16.97,,,bookstore_employees
+1029,Elliot Brown,YYC-NW,Seasonal Associate,SEASONAL,17.39,,,bookstore_employees
+1030,Dylan Smith,YYC-NW,Seasonal Associate,SEASONAL,17.71,,,bookstore_employees
+1031,Elliot Clark,YYC-NW,Warehouse Clerk,PERM,18.78,2020-07-02,,bookstore_employees
+1032,Harper Young,YYC-NW,E‑Commerce Specialist,PERM,27.81,2020-09-23,,bookstore_employees
+1033,Parker White,YYC-SE,Store Manager,PERM,31.57,2021-01-26,,bookstore_employees
+1034,Casey Campbell,YYC-SE,Assistant Manager,PERM,26.37,2021-09-01,,bookstore_employees
+1035,Taylor Singh,YYC-SE,Bookseller,PERM,17.29,2022-10-27,,bookstore_employees
+1036,Jessie Roy,YYC-SE,Bookseller,PERM,18.8,2019-10-22,,bookstore_employees
+1037,Rowan Smith,YYC-SE,Bookseller,PERM,19.13,2022-07-22,2023-12-15,bookstore_employees
+1038,Riley Brown,YYC-SE,Bookseller,PERM,21.09,2020-11-13,,bookstore_employees
+1039,Dylan Anderson,YYC-SE,Seasonal Associate,SEASONAL,16.42,,,bookstore_employees
+1040,Brooklyn Adams,YYC-SE,Seasonal Associate,SEASONAL,16.83,,,bookstore_employees
+1041,Parker Wilson,YYC-SE,Seasonal Associate,SEASONAL,17.86,,,bookstore_employees
+1042,Parker Pereira,YYC-SE,Seasonal Associate,SEASONAL,17.13,,,bookstore_employees
+1043,Casey Baker,YYC-SE,Warehouse Clerk,PERM,21.61,2024-02-17,,bookstore_employees
+1044,Quinn Campbell,YYC-SE,E‑Commerce Specialist,PERM,27.48,2018-06-08,,bookstore_employees
+1045,Jessie Adams,YYC-WH,Seasonal Associate,SEASONAL,16.27,,,bookstore_employees
+1046,Taylor Young,YYC-WH,Seasonal Associate,SEASONAL,16.08,,,bookstore_employees
+1047,Harper Wilson,YYC-WH,Seasonal Associate,SEASONAL,16.11,,,bookstore_employees
+1048,Elliot Foster,YYC-WH,Seasonal Associate,SEASONAL,16.7,,,bookstore_employees
+1049,Riley Wilson,YYC-WH,Seasonal Associate,SEASONAL,17.24,,,bookstore_employees
+1050,Brooklyn Chen,YYC-WH,Seasonal Associate,SEASONAL,16.8,,,bookstore_employees
+1051,Quinn Adams,YYC-WH,Warehouse Clerk,PERM,18.1,2021-06-07,,bookstore_employees
+1052,Skyler Gagnon,YYC-WH,Warehouse Clerk,PERM,21.03,2020-03-09,,bookstore_employees
+1053,Riley Baker,YYC-WH,Warehouse Clerk,PERM,19.02,2020-05-03,,bookstore_employees
+1054,Hayden Gordon,YYC-WH,Warehouse Clerk,PERM,19.89,2020-07-19,,bookstore_employees
+1055,Sam Roy,YYC-DT,Seasonal Associate,SEASONAL,17.86,2019-07-04,2019-08-22,bookstore_employees
+1056,Sam Turner,YYC-DT,Seasonal Associate,SEASONAL,17.64,2019-07-07,2019-08-24,bookstore_employees
+1057,Dylan Anderson,YYC-DT,Seasonal Associate,SEASONAL,16.99,2019-07-04,2019-08-22,bookstore_employees
+1058,Taylor Martin,YYC-DT,Seasonal Associate,SEASONAL,16.73,2019-11-24,2019-12-26,bookstore_employees
+1059,Spencer Campbell,YYC-DT,Seasonal Associate,SEASONAL,16.37,2019-11-20,2019-12-30,bookstore_employees
+1060,Hayden Martin,YYC-DT,Seasonal Associate,SEASONAL,17.79,2019-11-20,2019-12-23,bookstore_employees
+1061,Harper MacLeod,YYC-DT,Seasonal Associate,SEASONAL,17.57,2019-11-22,2019-12-26,bookstore_employees
+1062,Dylan Adams,YYC-DT,Seasonal Associate,SEASONAL,16.98,2019-11-11,2019-12-27,bookstore_employees
+1063,Brooklyn Li,YYC-NW,Seasonal Associate,SEASONAL,16.22,2019-07-10,2019-08-22,bookstore_employees
+1064,Quinn Li,YYC-NW,Seasonal Associate,SEASONAL,16.93,2019-07-01,2019-08-31,bookstore_employees
+1065,Riley Foster,YYC-NW,Seasonal Associate,SEASONAL,17.57,2019-11-24,2019-12-30,bookstore_employees
+1066,Elliot Gagnon,YYC-NW,Seasonal Associate,SEASONAL,16.73,2019-11-11,2019-12-28,bookstore_employees
+1067,Quinn Foster,YYC-NW,Seasonal Associate,SEASONAL,17.35,2019-11-11,2019-12-28,bookstore_employees
+1068,Spencer Patel,YYC-NW,Seasonal Associate,SEASONAL,16.18,2019-11-24,2019-12-27,bookstore_employees
+1069,Spencer Chen,YYC-SE,Seasonal Associate,SEASONAL,16.0,2019-07-14,2019-08-28,bookstore_employees
+1070,Parker Roy,YYC-SE,Seasonal Associate,SEASONAL,16.64,2019-07-04,2019-08-30,bookstore_employees
+1071,Morgan Hughes,YYC-SE,Seasonal Associate,SEASONAL,17.23,2019-07-14,2019-08-24,bookstore_employees
+1072,Jamie Smith,YYC-SE,Seasonal Associate,SEASONAL,17.36,2019-07-01,2019-08-29,bookstore_employees
+1073,Sam Brown,YYC-SE,Seasonal Associate,SEASONAL,16.25,2019-07-11,2019-08-24,bookstore_employees
+1074,Morgan Adams,YYC-SE,Seasonal Associate,SEASONAL,16.26,2019-11-21,2019-12-23,bookstore_employees
+1075,Avery Baker,YYC-SE,Seasonal Associate,SEASONAL,16.24,2019-11-10,2019-12-29,bookstore_employees
+1076,Reese Young,YYC-DT,Seasonal Associate,SEASONAL,17.34,2020-07-01,2020-08-26,bookstore_employees
+1077,Taylor Chen,YYC-DT,Seasonal Associate,SEASONAL,16.12,2020-07-15,2020-08-28,bookstore_employees
+1078,Dylan Young,YYC-DT,Seasonal Associate,SEASONAL,16.33,2020-07-05,2020-08-23,bookstore_employees
+1079,Brooklyn Hughes,YYC-DT,Seasonal Associate,SEASONAL,16.13,2020-07-08,2020-08-28,bookstore_employees
+1080,Quinn Gagnon,YYC-DT,Seasonal Associate,SEASONAL,17.35,2020-07-07,2020-08-25,bookstore_employees
+1081,Alex Baker,YYC-DT,Seasonal Associate,SEASONAL,17.22,2020-11-21,2020-12-26,bookstore_employees
+1082,Sage Brown,YYC-DT,Seasonal Associate,SEASONAL,16.4,2020-11-17,2020-12-31,bookstore_employees
+1083,Jessie Gagnon,YYC-DT,Seasonal Associate,SEASONAL,17.92,2020-11-12,2020-12-26,bookstore_employees
+1084,Quinn Gordon,YYC-DT,Seasonal Associate,SEASONAL,16.78,2020-11-23,2020-12-26,bookstore_employees
+1085,Harper Turner,YYC-DT,Seasonal Associate,SEASONAL,17.05,2020-11-24,2020-12-26,bookstore_employees
+1086,Jordan Clark,YYC-NW,Seasonal Associate,SEASONAL,16.04,2020-07-07,2020-08-24,bookstore_employees
+1087,Reese Wilson,YYC-NW,Seasonal Associate,SEASONAL,17.36,2020-07-09,2020-08-31,bookstore_employees
+1088,Brooklyn Nguyen,YYC-NW,Seasonal Associate,SEASONAL,16.24,2020-11-20,2020-12-29,bookstore_employees
+1089,Sage Foster,YYC-NW,Seasonal Associate,SEASONAL,17.21,2020-11-20,2020-12-27,bookstore_employees
+1090,Quinn Hughes,YYC-NW,Seasonal Associate,SEASONAL,16.2,2020-11-13,2020-12-24,bookstore_employees
+1091,Avery Hughes,YYC-SE,Seasonal Associate,SEASONAL,17.28,2020-07-13,2020-08-31,bookstore_employees
+1092,Jordan Adams,YYC-SE,Seasonal Associate,SEASONAL,16.09,2020-07-03,2020-08-30,bookstore_employees
+1093,Rowan Adams,YYC-SE,Seasonal Associate,SEASONAL,16.79,2020-07-04,2020-08-30,bookstore_employees
+1094,Finley Young,YYC-SE,Seasonal Associate,SEASONAL,17.17,2020-11-22,2020-12-22,bookstore_employees
+1095,Casey Li,YYC-SE,Seasonal Associate,SEASONAL,16.55,2020-11-22,2020-12-22,bookstore_employees
+1096,Parker Gordon,YYC-SE,Seasonal Associate,SEASONAL,16.29,2020-11-11,2020-12-26,bookstore_employees
+1097,Avery Gagnon,YYC-DT,Seasonal Associate,SEASONAL,16.5,2021-07-07,2021-08-30,bookstore_employees
+1098,Finley Nguyen,YYC-DT,Seasonal Associate,SEASONAL,17.8,2021-07-10,2021-08-23,bookstore_employees
+1099,Robin Turner,YYC-DT,Seasonal Associate,SEASONAL,17.59,2021-11-15,2021-12-25,bookstore_employees
+1100,Jamie Nguyen,YYC-DT,Seasonal Associate,SEASONAL,17.34,2021-11-12,2021-12-28,bookstore_employees
+1101,Jordan Pereira,YYC-DT,Seasonal Associate,SEASONAL,16.49,2021-11-11,2021-12-25,bookstore_employees
+1102,Rowan Roy,YYC-DT,Seasonal Associate,SEASONAL,16.64,2021-11-15,2021-12-25,bookstore_employees
+1103,Sam Roy,YYC-DT,Seasonal Associate,SEASONAL,17.74,2021-11-21,2021-12-31,bookstore_employees
+1104,Spencer Smith,YYC-NW,Seasonal Associate,SEASONAL,17.91,2021-07-02,2021-08-31,bookstore_employees
+1105,Taylor Foster,YYC-NW,Seasonal Associate,SEASONAL,16.72,2021-07-02,2021-08-24,bookstore_employees
+1106,Jamie Smith,YYC-NW,Seasonal Associate,SEASONAL,16.04,2021-11-11,2021-12-28,bookstore_employees
+1107,Elliot Gordon,YYC-NW,Seasonal Associate,SEASONAL,17.63,2021-11-14,2021-12-31,bookstore_employees
+1108,Morgan Li,YYC-SE,Seasonal Associate,SEASONAL,18.0,2021-07-04,2021-08-25,bookstore_employees
+1109,Jessie MacLeod,YYC-SE,Seasonal Associate,SEASONAL,17.64,2021-07-13,2021-08-30,bookstore_employees
+1110,Elliot Wilson,YYC-SE,Seasonal Associate,SEASONAL,17.12,2021-07-08,2021-08-31,bookstore_employees
+1111,Quinn Hughes,YYC-SE,Seasonal Associate,SEASONAL,16.77,2021-11-20,2021-12-26,bookstore_employees
+1112,Robin Patel,YYC-SE,Seasonal Associate,SEASONAL,16.81,2021-11-23,2021-12-23,bookstore_employees
+1113,Casey Gagnon,YYC-DT,Seasonal Associate,SEASONAL,16.11,2022-07-11,2022-08-25,bookstore_employees
+1114,Sage Campbell,YYC-DT,Seasonal Associate,SEASONAL,16.3,2022-07-05,2022-08-31,bookstore_employees
+1115,Casey Campbell,YYC-DT,Seasonal Associate,SEASONAL,16.04,2022-07-12,2022-08-28,bookstore_employees
+1116,Rowan Chen,YYC-DT,Seasonal Associate,SEASONAL,17.9,2022-07-11,2022-08-23,bookstore_employees
+1117,Jessie Adams,YYC-DT,Seasonal Associate,SEASONAL,16.61,2022-11-12,2022-12-30,bookstore_employees
+1118,Parker Thompson,YYC-DT,Seasonal Associate,SEASONAL,17.17,2022-11-10,2022-12-23,bookstore_employees
+1119,Finley Thompson,YYC-DT,Seasonal Associate,SEASONAL,17.51,2022-11-21,2022-12-30,bookstore_employees
+1120,Jordan Roy,YYC-DT,Seasonal Associate,SEASONAL,16.62,2022-11-23,2022-12-30,bookstore_employees
+1121,Riley Smith,YYC-DT,Seasonal Associate,SEASONAL,16.04,2022-11-16,2022-12-27,bookstore_employees
+1122,Hayden Nguyen,YYC-NW,Seasonal Associate,SEASONAL,16.22,2022-07-05,2022-08-22,bookstore_employees
+1123,Spencer Gagnon,YYC-NW,Seasonal Associate,SEASONAL,17.46,2022-07-15,2022-08-27,bookstore_employees
+1124,Riley White,YYC-NW,Seasonal Associate,SEASONAL,17.09,2022-07-06,2022-08-30,bookstore_employees
+1125,Riley Nguyen,YYC-NW,Seasonal Associate,SEASONAL,16.39,2022-11-13,2022-12-25,bookstore_employees
+1126,Taylor Campbell,YYC-NW,Seasonal Associate,SEASONAL,17.11,2022-11-10,2022-12-31,bookstore_employees
+1127,Harper Singh,YYC-SE,Seasonal Associate,SEASONAL,17.41,2022-07-11,2022-08-26,bookstore_employees
+1128,Riley Smith,YYC-SE,Seasonal Associate,SEASONAL,17.02,2022-07-05,2022-08-22,bookstore_employees
+1129,Sam Turner,YYC-SE,Seasonal Associate,SEASONAL,17.09,2022-07-04,2022-08-29,bookstore_employees
+1130,Taylor Hughes,YYC-SE,Seasonal Associate,SEASONAL,17.81,2022-11-10,2022-12-24,bookstore_employees
+1131,Riley Anderson,YYC-SE,Seasonal Associate,SEASONAL,16.61,2022-11-17,2022-12-24,bookstore_employees
+1132,Jessie MacLeod,YYC-SE,Seasonal Associate,SEASONAL,16.88,2022-11-17,2022-12-25,bookstore_employees
+1133,Casey Gagnon,YYC-SE,Seasonal Associate,SEASONAL,16.31,2022-11-24,2022-12-28,bookstore_employees
+1134,Morgan Foster,YYC-DT,Seasonal Associate,SEASONAL,17.88,2023-07-07,2023-08-28,bookstore_employees
+1135,Spencer White,YYC-DT,Seasonal Associate,SEASONAL,17.71,2023-07-02,2023-08-30,bookstore_employees
+1136,Jamie Roy,YYC-DT,Seasonal Associate,SEASONAL,17.35,2023-07-07,2023-08-29,bookstore_employees
+1137,Jamie Patel,YYC-DT,Seasonal Associate,SEASONAL,17.02,2023-07-13,2023-08-28,bookstore_employees
+1138,Casey Brown,YYC-DT,Seasonal Associate,SEASONAL,16.77,2023-11-10,2023-12-26,bookstore_employees
+1139,Jordan Baker,YYC-DT,Seasonal Associate,SEASONAL,17.38,2023-11-24,2023-12-24,bookstore_employees
+1140,Reese Pereira,YYC-DT,Seasonal Associate,SEASONAL,16.65,2023-11-22,2023-12-29,bookstore_employees
+1141,Reese Patel,YYC-DT,Seasonal Associate,SEASONAL,17.63,2023-11-16,2023-12-24,bookstore_employees
+1142,Brooklyn Foster,YYC-NW,Seasonal Associate,SEASONAL,17.89,2023-07-06,2023-08-27,bookstore_employees
+1143,Sam Baker,YYC-NW,Seasonal Associate,SEASONAL,16.52,2023-07-09,2023-08-22,bookstore_employees
+1144,Harper Adams,YYC-NW,Seasonal Associate,SEASONAL,16.99,2023-07-04,2023-08-27,bookstore_employees
+1145,Jordan Singh,YYC-NW,Seasonal Associate,SEASONAL,17.64,2023-11-23,2023-12-24,bookstore_employees
+1146,Dylan Foster,YYC-NW,Seasonal Associate,SEASONAL,16.5,2023-11-20,2023-12-27,bookstore_employees
+1147,Hayden Brown,YYC-NW,Seasonal Associate,SEASONAL,17.7,2023-11-20,2023-12-27,bookstore_employees
+1148,Riley Martin,YYC-SE,Seasonal Associate,SEASONAL,16.89,2023-07-13,2023-08-30,bookstore_employees
+1149,Casey Gagnon,YYC-SE,Seasonal Associate,SEASONAL,16.57,2023-07-15,2023-08-22,bookstore_employees
+1150,Brooklyn Li,YYC-SE,Seasonal Associate,SEASONAL,16.04,2023-11-13,2023-12-22,bookstore_employees
+1151,Reese Wilson,YYC-SE,Seasonal Associate,SEASONAL,16.75,2023-11-19,2023-12-23,bookstore_employees
+1152,Quinn Thompson,YYC-SE,Seasonal Associate,SEASONAL,17.06,2023-11-18,2023-12-25,bookstore_employees
+1153,Riley Smith,YYC-SE,Seasonal Associate,SEASONAL,16.55,2023-11-21,2023-12-29,bookstore_employees
+1154,Brooklyn Gagnon,YYC-SE,Seasonal Associate,SEASONAL,18.0,2023-11-24,2023-12-29,bookstore_employees
+1155,Jordan Singh,YYC-DT,Seasonal Associate,SEASONAL,17.45,2024-07-08,2024-08-27,bookstore_employees
+1156,Harper Gagnon,YYC-DT,Seasonal Associate,SEASONAL,17.61,2024-07-13,2024-08-29,bookstore_employees
+1157,Alex Smith,YYC-DT,Seasonal Associate,SEASONAL,16.09,2024-11-19,2024-12-29,bookstore_employees
+1158,Riley Wilson,YYC-DT,Seasonal Associate,SEASONAL,17.84,2024-11-23,2024-12-27,bookstore_employees
+1159,Reese MacLeod,YYC-DT,Seasonal Associate,SEASONAL,17.36,2024-11-23,2024-12-22,bookstore_employees
+1160,Jamie Martin,YYC-NW,Seasonal Associate,SEASONAL,16.32,2024-07-03,2024-08-30,bookstore_employees
+1161,Dylan Singh,YYC-NW,Seasonal Associate,SEASONAL,17.74,2024-07-14,2024-08-24,bookstore_employees
+1162,Avery Chen,YYC-NW,Seasonal Associate,SEASONAL,17.58,2024-07-14,2024-08-25,bookstore_employees
+1163,Alex Chen,YYC-NW,Seasonal Associate,SEASONAL,16.55,2024-07-15,2024-08-28,bookstore_employees
+1164,Quinn Thompson,YYC-NW,Seasonal Associate,SEASONAL,16.42,2024-11-14,2024-12-31,bookstore_employees
+1165,Rowan Patel,YYC-NW,Seasonal Associate,SEASONAL,17.06,2024-11-22,2024-12-29,bookstore_employees
+1166,Skyler Foster,YYC-NW,Seasonal Associate,SEASONAL,16.36,2024-11-14,2024-12-27,bookstore_employees
+1167,Elliot Baker,YYC-NW,Seasonal Associate,SEASONAL,17.31,2024-11-21,2024-12-24,bookstore_employees
+1168,Skyler MacLeod,YYC-NW,Seasonal Associate,SEASONAL,16.92,2024-11-16,2024-12-27,bookstore_employees
+1169,Morgan Martin,YYC-SE,Seasonal Associate,SEASONAL,16.52,2024-07-08,2024-08-28,bookstore_employees
+1170,Rowan Martin,YYC-SE,Seasonal Associate,SEASONAL,16.02,2024-07-03,2024-08-25,bookstore_employees
+1171,Sam White,YYC-SE,Seasonal Associate,SEASONAL,17.22,2024-07-12,2024-08-27,bookstore_employees
+1172,Sage Gagnon,YYC-SE,Seasonal Associate,SEASONAL,17.79,2024-07-01,2024-08-29,bookstore_employees
+1173,Sam Foster,YYC-SE,Seasonal Associate,SEASONAL,17.44,2024-11-20,2024-12-31,bookstore_employees
+1174,Hayden Singh,YYC-SE,Seasonal Associate,SEASONAL,16.19,2024-11-12,2024-12-23,bookstore_employees
+1175,Sam White,YYC-SE,Seasonal Associate,SEASONAL,16.36,2024-11-23,2024-12-22,bookstore_employees
