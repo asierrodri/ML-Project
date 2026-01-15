@@ -5,6 +5,9 @@ import numpy as np
 import pandas as pd
 from flask import Flask, render_template, request, redirect, url_for, flash
 
+app = Flask(__name__)
+app.secret_key = "secret_key_for_session"
+
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
@@ -37,8 +40,7 @@ PAYROLL_EMP_CLUSTER_PATH = os.path.join(DATA_DIR, "payroll_emp_clusters.csv")
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(MODEL_DIR, exist_ok=True)
 
-app = Flask(__name__)
-app.secret_key = "dev-secret"  # cámbialo en producción
+# app ya definida arriba
 
 
 # -------------------------
