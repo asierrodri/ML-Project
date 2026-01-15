@@ -1,0 +1,16 @@
+{
+  "features": [
+    "hours_biweekly",
+    "gross_pay",
+    "employee_benefits",
+    "net_pay"
+  ],
+  "roles_total": 6,
+  "roles_modeled": 6,
+  "min_role_rows": 50,
+  "contamination": 0.02,
+  "n_clusters": 3,
+  "rows_payroll": 6640,
+  "rows_role_if": 6640,
+  "rows_emp": 175
+}

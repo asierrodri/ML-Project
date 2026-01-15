@@ -1,0 +1,258 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="section-header">
+  <h1 class="page-title">Predicción de Ventas</h1>
+  <p class="page-subtitle">Utiliza modelos de Machine Learning para predecir el Net Revenue de tus tiendas</p>
+</div>
+
+{% if not model_exists %}
+  <div class="msg-err">No hay modelo guardado. Ve a <a href="/admin">Administración</a> y reentrena el modelo.</div>
+{% endif %}
+
+{% if error %}
+  <div class="msg-err">{{ error }}</div>
+{% endif %}
+
+<form method="post">
+  <div class="form-title">Parámetros de Predicción</div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="store_id">Tienda</label>
+      <select id="store_id" name="store_id" required>
+        <option value="ALL">Todas las tiendas</option>
+        {% for s in stores %}
+          <option value="{{ s }}">{{ s }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="channel">Canal de Venta</label>
+      <select id="channel" name="channel" required>
+        <option value="ALL">Todos los canales</option>
+        {% for c in channels %}
+          <option value="{{ c }}">{{ c }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="horizon">Horizonte de Predicción (meses)</label>
+      <input id="horizon" type="number" name="horizon" value="12" min="1" max="36" />
+    </div>
+
+    <div class="form-group">
+      <button type="submit">🔮 Generar Predicción</button>
+    </div>
+  </div>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% if historical %}
+  <div class="chart-container">
+    <h3 class="chart-title">Net Revenue — Histórico vs Forecast</h3>
+    <p class="chart-subtitle">Comparación entre datos históricos y predicciones del modelo</p>
+    <canvas id="revChart" height="100"></canvas>
+  </div>
+
+  <script>
+    const historical = {{ historical | tojson }};
+    const forecast = {{ forecast | tojson if forecast else "null" }};
+
+    // labels = histórico + futuro
+    const histLabels = historical.map(d => d.date);
+    const histValues = historical.map(d => d.net_revenue);
+
+    let fcLabels = [];
+    let fcValues = [];
+
+    if (forecast) {
+      // si forecast es agregado, la columna puede ser forecast_net_revenue
+      // si no, también la tienes así
+      fcLabels = forecast.map(d => d.date);
+      fcValues = forecast.map(d => d.forecast_net_revenue);
+    }
+
+    const mae = {{ mae_test if mae_test is not none else "null" }};
+
+    let upper = [];
+    let lower = [];
+
+    if (forecast && mae) {
+      // banda constante ±MAE
+      upper = fcValues.map(v => v + mae);
+      lower = fcValues.map(v => Math.max(0, v - mae));
+    }
+
+    const upperSeries = Array(histLabels.length).fill(null).concat(upper);
+    const lowerSeries = Array(histLabels.length).fill(null).concat(lower);
+
+    const allLabels = forecast ? histLabels.concat(fcLabels) : histLabels;
+
+    // para que se vea "cortada" la línea: metemos nulls
+    const histSeries = histValues.concat(forecast ? Array(fcLabels.length).fill(null) : []);
+    const fcSeries = (forecast ? Array(histLabels.length).fill(null).concat(fcValues) : []);
+
+    const lastHistDate = histLabels[histLabels.length - 1];
+
+    // plugin simple para línea vertical del "inicio forecast"
+    const vlinePlugin = {
+      id: 'vline',
+      afterDraw: (chart) => {
+        if (!forecast) return;
+        const {ctx, chartArea, scales} = chart;
+        const xScale = scales.x;
+
+        const xIndex = allLabels.indexOf(lastHistDate);
+        if (xIndex < 0) return;
+
+        const x = xScale.getPixelForValue(xIndex);
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(x, chartArea.top);
+        ctx.lineTo(x, chartArea.bottom);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(100, 116, 139, 0.5)';
+        ctx.setLineDash([6, 4]);
+        ctx.stroke();
+        ctx.restore();
+      }
+    };
+
+    const ctx = document.getElementById("revChart").getContext("2d");
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: allLabels,
+        datasets: [
+          {
+            label: "Histórico",
+            data: histSeries,
+            tension: 0.4,
+            pointRadius: 0,
+            borderColor: '#2563eb',
+            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+            borderWidth: 3,
+            fill: false
+          },
+
+          ...(forecast ? [{
+            label: "Forecast",
+            data: fcSeries,
+            tension: 0.4,
+            pointRadius: 0,
+            borderColor: '#16a34a',
+            backgroundColor: 'rgba(22, 163, 74, 0.1)',
+            borderWidth: 3,
+            borderDash: [5, 5],
+            fill: false
+          }] : []),
+
+          ...(forecast && mae ? [
+            {
+              label: "Intervalo de confianza (±MAE)",
+              data: upperSeries,
+              tension: 0.4,
+              pointRadius: 0,
+              borderWidth: 0,
+              fill: false
+            },
+            {
+              label: "",
+              data: lowerSeries,
+              tension: 0.4,
+              pointRadius: 0,
+              borderWidth: 0,
+              backgroundColor: 'rgba(34, 197, 94, 0.1)',
+              fill: '-1'
+            }
+          ] : [])
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              usePointStyle: true,
+              padding: 15,
+              font: {
+                size: 12,
+                weight: '600'
+              }
+            }
+          },
+          tooltip: {
+            mode: "index",
+            intersect: false,
+            backgroundColor: 'rgba(15, 23, 42, 0.8)',
+            titleFont: {size: 12, weight: 'bold'},
+            bodyFont: {size: 11},
+            padding: 12,
+            borderRadius: 8
+          }
+        },
+        interaction: { mode: "index", intersect: false },
+        scales: {
+          x: {
+            ticks: {
+              maxTicksLimit: 12,
+              font: {size: 11}
+            },
+            grid: {
+              color: 'rgba(226, 232, 240, 0.5)'
+            }
+          },
+          y: {
+            ticks: {
+              font: {size: 11}
+            },
+            grid: {
+              color: 'rgba(226, 232, 240, 0.5)'
+            }
+          }
+        }
+      },
+      plugins: [vlinePlugin]
+    });
+  </script>
+{% endif %}
+
+
+{% if forecast %}
+  <div class="section-header mt-16">
+    <h2 class="section-title">Resultados de la Predicción</h2>
+    <p class="section-subtitle">Detalle mes a mes de las predicciones generadas</p>
+  </div>
+
+  <div style="overflow-x: auto;">
+    <table>
+      <thead>
+        <tr>
+          <th>📅 Fecha</th>
+          <th>🏪 Tienda</th>
+          <th>📦 Canal</th>
+          <th>💰 Forecast Net Revenue</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in forecast %}
+          <tr>
+            <td><strong>{{ r.date }}</strong></td>
+            <td>{{ r.store_id }}</td>
+            <td>{{ r.channel }}</td>
+            <td><strong style="color: #2563eb;">{{ "%.2f"|format(r.forecast_net_revenue) }}</strong></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endif %}
+
+{% endblock %}
