@@ -1,0 +1,9 @@
+*.ipynb
+images/
+EDAs/
+*.pdf
+*.odt
+.git/
+__pycache__/
+ventas-web/app.log
+ventas-web/__pycache__/
