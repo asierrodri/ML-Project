@@ -42,7 +42,7 @@ Desarrollar un sistema capaz de:
 - Diferencias claras por tienda y canal
 
 <p align="center">
-  <img src="images/eda_sales_timeseries.png" width="700">
+  <img src="src/images/eda_sales_timeseries.png" width="700">
 </p>
 
 > El EDA justificó el uso de **granularidad mensual** y la exclusión de datos **anteriores a 2020** para evitar distorsiones estructurales.
@@ -57,7 +57,7 @@ Desarrollar un sistema capaz de:
 - Base para detección de anomalías
 
 <p align="center">
-  <img src="images/eda_payroll_distribution.png" width="650">
+  <img src="src/images/eda_payroll_distribution.png" width="650">
 </p>
 
 ---
@@ -80,7 +80,7 @@ SARIMA(1,0,0)(0,1,0)[12]
 - MAE ≈ 4.002
 
 <p align="center">
-  <img src="images/sarima_forecast.png" width="700">
+  <img src="src/images/sarima_forecast.png" width="700">
 </p>
 
 ✔️ Buen baseline  
@@ -120,7 +120,7 @@ Motivo:
 - MAE ≈ 1.803
 
 <p align="center">
-  <img src="images/ml_real_vs_pred.png" width="700">
+  <img src="src/images/ml_real_vs_pred.png" width="700">
 </p>
 
 ---
@@ -133,7 +133,7 @@ Motivo:
 - No depende de variables futuras externas
 
 <p align="center">
-  <img src="images/final_forecast_12m.png" width="750">
+  <img src="src/images/final_forecast_12m.png" width="750">
 </p>
 
 ---
@@ -149,7 +149,7 @@ Bloque independiente orientado a **control de calidad del dato y análisis salar
 - Identificación de empleados con patrones atípicos
 
 <p align="center">
-  <img src="images/payroll_anomalies.png" width="650">
+  <img src="src/images/payroll_anomalies.png" width="650">
 </p>
 
 ---
@@ -164,7 +164,7 @@ Bloque independiente orientado a **control de calidad del dato y análisis salar
   - Alto coste
 
 <p align="center">
-  <img src="images/payroll_clusters.png" width="650">
+  <img src="src/images/payroll_clusters.png" width="650">
 </p>
 
 📌 El payroll **no se integra en el modelo de ventas** para evitar *data leakage*, pero aporta valor analítico real.
@@ -184,7 +184,7 @@ Aplicación ligera para **explotar el modelo sin notebooks**.
 - Vista específica para análisis de payroll
 
 <p align="center">
-  <img src="images/web_admin.png" width="750">
+  <img src="src/images/web_admin.png" width="750">
 </p>
 
 ---
