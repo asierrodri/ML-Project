@@ -1,0 +1,13 @@
+{
+  "training_mode": "normal",
+  "min_date": "2020-01-01",
+  "test_months": 12,
+  "rmse_train": 1598.255288913715,
+  "mae_train": 1170.1855978588687,
+  "rmse_test": 2663.1316947880923,
+  "mae_test": 1803.4306159091147,
+  "train_rows": 216,
+  "test_rows": 72,
+  "last_train_date": "2023-12-31",
+  "last_test_date": "2024-12-31"
+}

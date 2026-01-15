@@ -1,0 +1,239 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Payroll</h2>
+
+<div style="margin: 12px 0 18px 0;">
+  <a href="/admin">← Volver a Admin</a>
+</div>
+
+<!-- KPI -->
+<div style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom:14px;">
+  <div style="padding:12px; border:1px solid #e5e7eb; border-radius:10px;">
+    <div style="color:#6b7280; font-size:12px;">Filas payroll (total)</div>
+    <div style="font-size:20px;"><b>{{ total_rows }}</b></div>
+  </div>
+  <div style="padding:12px; border:1px solid #e5e7eb; border-radius:10px;">
+    <div style="color:#6b7280; font-size:12px;">Anomalías (total)</div>
+    <div style="font-size:20px;"><b>{{ total_anoms }}</b></div>
+  </div>
+  <div style="padding:12px; border:1px solid #e5e7eb; border-radius:10px;">
+    <div style="color:#6b7280; font-size:12px;">Filas (filtro actual)</div>
+    <div style="font-size:20px;"><b>{{ filtered_rows }}</b></div>
+  </div>
+  <div style="padding:12px; border:1px solid #e5e7eb; border-radius:10px;">
+    <div style="color:#6b7280; font-size:12px;">Anomalías (filtro actual)</div>
+    <div style="font-size:20px;"><b>{{ filtered_anoms }}</b></div>
+  </div>
+</div>
+
+<!-- Filtros -->
+<form method="get" action="/payroll" style="border:1px solid #e5e7eb; border-radius:12px; padding:14px; margin-bottom:18px;">
+  <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end;">
+
+    <div>
+      <label style="display:block; font-size:12px; color:#6b7280;">Role</label>
+      <select name="role" style="padding:8px; min-width:220px;">
+        <option value="">(Todos)</option>
+        {% for r in roles %}
+          <option value="{{ r }}" {% if selected_role == r %}selected{% endif %}>{{ r }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div>
+      <label style="display:block; font-size:12px; color:#6b7280;">Location</label>
+      <select name="location" style="padding:8px; min-width:140px;">
+        <option value="">(Todas)</option>
+        {% for l in locations %}
+          <option value="{{ l }}" {% if selected_location == l %}selected{% endif %}>{{ l }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div>
+      <label style="display:block; font-size:12px; color:#6b7280;">Employee ID</label>
+      <input name="employee_id" value="{{ selected_employee_id }}" placeholder="1001..."
+             style="padding:8px; min-width:120px;" />
+    </div>
+
+    <div>
+      <label style="display:block; font-size:12px; color:#6b7280;">Cluster</label>
+      <select name="cluster" style="padding:8px; min-width:110px;">
+        <option value="">(Todos)</option>
+        {% for c in clusters_list %}
+          <option value="{{ c }}" {% if selected_cluster|string == c|string %}selected{% endif %}>{{ c }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <label style="display:flex; gap:8px; align-items:center; padding:8px 0;">
+      <input type="checkbox" name="anomaly_only" value="1" {% if selected_anomaly_only %}checked{% endif %}>
+      Solo anomalías
+    </label>
+
+    <button type="submit" style="padding:9px 14px;">Aplicar</button>
+    <a href="/payroll" style="padding:9px 14px; display:inline-block;">Reset</a>
+
+  </div>
+</form>
+
+<!-- Gráficos -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div style="display:grid; grid-template-columns: 1fr; gap:18px;">
+  <div style="border:1px solid #e5e7eb; border-radius:12px; padding:14px;">
+    <h3 style="margin-top:0;">Anomalías por rol (Top)</h3>
+    <canvas id="barRoles" height="120"></canvas>
+  </div>
+
+  <div style="border:1px solid #e5e7eb; border-radius:12px; padding:14px;">
+    <h3 style="margin-top:0;">Anomalías por mes (según filtro actual)</h3>
+    <canvas id="lineMonths" height="120"></canvas>
+  </div>
+
+  <div style="border:1px solid #e5e7eb; border-radius:12px; padding:14px;">
+    <h3 style="margin-top:0;">Scatter: Hours vs Gross (muestra)</h3>
+    <small style="color:#6b7280;">Puntos con anomaly_role = -1 son anomalías.</small>
+    <canvas id="scatterHG" height="140"></canvas>
+  </div>
+</div>
+
+<script>
+  const roleData = {{ role_anom_counts | tojson }};
+  const monthData = {{ anoms_by_month | tojson }};
+  const scatterData = {{ scatter | tojson }};
+
+  // Barras roles
+  const roles = roleData.map(d => d.role);
+  const roleAnoms = roleData.map(d => d.anoms);
+
+  new Chart(document.getElementById("barRoles"), {
+    type: "bar",
+    data: {
+      labels: roles,
+      datasets: [{ label: "Anomalías", data: roleAnoms }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: true } },
+      scales: { x: { ticks: { autoSkip: false } } }
+    }
+  });
+
+  // Línea meses
+  const months = monthData.map(d => d.month);
+  const monthAnoms = monthData.map(d => d.anoms);
+
+  new Chart(document.getElementById("lineMonths"), {
+    type: "line",
+    data: {
+      labels: months,
+      datasets: [{ label: "Anomalías", data: monthAnoms, tension: 0.2 }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: true } }
+    }
+  });
+
+  // Scatter hours vs gross (separamos normal/anom para que se vea mejor)
+  const normalPts = scatterData.filter(p => p.anomaly === 1).map(p => ({x:p.x, y:p.y}));
+  const anomPts = scatterData.filter(p => p.anomaly === -1).map(p => ({x:p.x, y:p.y}));
+
+  new Chart(document.getElementById("scatterHG"), {
+    type: "scatter",
+    data: {
+      datasets: [
+        { label: "Normal", data: normalPts, pointRadius: 2 },
+        { label: "Anomalía", data: anomPts, pointRadius: 3 }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: true } },
+      scales: {
+        x: { title: { display:true, text:"hours_biweekly" } },
+        y: { title: { display:true, text:"gross_pay" } }
+      }
+    }
+  });
+</script>
+
+<hr style="margin:22px 0;">
+
+<h3>Anomalías (tabla, máx 20)</h3>
+{% if anomalies and anomalies|length > 0 %}
+  <div style="overflow:auto; border:1px solid #e5e7eb; border-radius:8px;">
+    <table style="border-collapse:collapse; width:100%; min-width:900px;">
+      <thead>
+        <tr style="background:#f9fafb; text-align:left;">
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">pay_period_start</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">employee_id</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">employee_name</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">location</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">role</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">hours_biweekly</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">gross_pay</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">employee_benefits</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">net_pay</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in anomalies %}
+        <tr>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.pay_period_start }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.employee_id }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.employee_name }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.location }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.role }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.hours_biweekly }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.gross_pay }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.employee_benefits }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.net_pay }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p style="color:#6b7280;">No hay anomalías para el filtro actual.</p>
+{% endif %}
+
+<hr style="margin:22px 0;">
+
+<h3>Clusters (tabla, máx 20)</h3>
+{% if clusters and clusters|length > 0 %}
+  <div style="overflow:auto; border:1px solid #e5e7eb; border-radius:8px;">
+    <table style="border-collapse:collapse; width:100%; min-width:820px;">
+      <thead>
+        <tr style="background:#f9fafb; text-align:left;">
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">employee_id</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">role</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">hours_biweekly</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">gross_pay</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">employee_benefits</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">net_pay</th>
+          <th style="padding:10px; border-bottom:1px solid #e5e7eb;">cluster</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in clusters %}
+        <tr>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.employee_id }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.role }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.hours_biweekly }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.gross_pay }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.employee_benefits }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;">{{ r.net_pay }}</td>
+          <td style="padding:10px; border-bottom:1px solid #f3f4f6;"><b>{{ r.cluster }}</b></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% else %}
+  <p style="color:#6b7280;">No hay clusters para el filtro actual.</p>
+{% endif %}
+
+{% endblock %}

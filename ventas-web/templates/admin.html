@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Admin</h2>
+
+<ul>
+  <li>RAW existe: <b>{{ info.raw_exists }}</b></li>
+  <li>Filas mensual agregado: <b>{{ info.monthly_rows }}</b></li>
+  <li>Modelo guardado: <b>{{ info.model_exists }}</b></li>
+</ul>
+
+{% if info.metrics %}
+  <h3>Métricas (validación temporal)</h3>
+  <ul>
+    {% if info.metrics.training_mode %}
+      <li>Modo: <b>{{ info.metrics.training_mode }}</b></li>
+    {% endif %}
+    {% if info.metrics.min_date is not none %}
+      <li>Filtro fecha: <b>{{ info.metrics.min_date }}</b></li>
+    {% else %}
+      <li>Filtro fecha: <b>sin filtro (incluye pre-2020)</b></li>
+    {% endif %}
+
+    <li>Test meses: <b>{{ info.metrics.test_months }}</b></li>
+    <li>MAE test: <b>{{ info.metrics.mae_test | round(2) }}</b></li>
+    <li>RMSE test: <b>{{ info.metrics.rmse_test | round(2) }}</b></li>
+  </ul>
+{% endif %}
+
+<h3>1) Subir datos (CSV)</h3>
+<form method="post" action="/admin/upload" enctype="multipart/form-data">
+  <input type="file" name="file" accept=".csv" required />
+  <button type="submit">Subir y recalcular monthly</button>
+</form>
+
+<h3 style="margin-top:18px;">2) Reentrenar modelo</h3>
+<form method="post" action="/admin/retrain">
+
+  <div style="margin: 10px 0 14px 0;">
+    <label style="display:flex; gap:10px; align-items:center;">
+      <input type="checkbox" name="include_pre_2020" value="1">
+      Incluir datos anteriores a 2020 (modo crisis)
+    </label>
+    <small style="color:#6b7280; display:block; margin-top:6px;">
+      Por defecto se entrena solo con datos desde 2020 para seguir la tendencia “normal”.
+    </small>
+  </div>
+
+  <button type="submit">Reentrenar y guardar modelo</button>
+</form>
+
+<hr style="margin:22px 0;">
+
+<h3>Payroll</h3>
+<p><a href="/payroll">Ver resultados payroll →</a></p>
+<ul>
+  <li>Payroll RAW existe: <b>{{ info.payroll_raw_exists }}</b></li>
+  <li>Iso por rol guardado: <b>{{ info.payroll_iso_exists }}</b></li>
+  <li>KMeans guardado: <b>{{ info.payroll_kmeans_exists }}</b></li>
+</ul>
+
+{% if info.payroll_metrics %}
+  <h4>Métricas payroll</h4>
+  <ul>
+    <li>Features: <b>{{ info.payroll_metrics.features }}</b></li>
+    <li>Roles modelados: <b>{{ info.payroll_metrics.roles_modeled }}</b> / {{ info.payroll_metrics.roles_total }}</li>
+    <li>Clusters: <b>{{ info.payroll_metrics.n_clusters }}</b></li>
+    <li>Filas payroll: <b>{{ info.payroll_metrics.rows_payroll }}</b></li>
+  </ul>
+{% endif %}
+
+<h4>1) Subir payroll (CSV)</h4>
+<form method="post" action="/admin/payroll/upload" enctype="multipart/form-data">
+  <input type="file" name="file" accept=".csv" required />
+  <button type="submit">Subir payroll</button>
+</form>
+
+<h4 style="margin-top:18px;">2) Entrenar payroll models</h4>
+<form method="post" action="/admin/payroll/retrain">
+  <button type="submit">Entrenar y guardar payroll models</button>
+</form>
+
+
+{% endblock %}

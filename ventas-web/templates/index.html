@@ -1,0 +1,177 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if not model_exists %}
+  <div class="msg-err">No hay modelo guardado. Ve a Admin y reentrena.</div>
+{% endif %}
+
+{% if error %}
+  <div class="msg-err">{{ error }}</div>
+{% endif %}
+
+<form method="post">
+  <div class="row">
+    <div>
+      <label>Tienda</label>
+      <select name="store_id" required>
+        <option value="ALL">Todas</option>
+        {% for s in stores %}
+          <option value="{{ s }}">{{ s }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div>
+      <label>Canal</label>
+      <select name="channel" required>
+        <option value="ALL">Todos</option>
+        {% for c in channels %}
+          <option value="{{ c }}">{{ c }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div>
+      <label>Horizonte (meses)</label>
+      <input type="number" name="horizon" value="12" min="1" max="36" />
+    </div>
+
+    <div style="align-self:end;">
+      <button type="submit">Predecir</button>
+    </div>
+  </div>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% if historical %}
+  <div style="border:1px solid #e5e7eb; border-radius:12px; padding:14px; margin-top:18px;">
+    <h3 style="margin-top:0;">Net Revenue — Histórico vs Forecast</h3>
+    <canvas id="revChart" height="120"></canvas>
+  </div>
+
+  <script>
+    const historical = {{ historical | tojson }};
+    const forecast = {{ forecast | tojson if forecast else "null" }};
+
+    // labels = histórico + futuro
+    const histLabels = historical.map(d => d.date);
+    const histValues = historical.map(d => d.net_revenue);
+
+    let fcLabels = [];
+    let fcValues = [];
+
+    if (forecast) {
+      // si forecast es agregado, la columna puede ser forecast_net_revenue
+      // si no, también la tienes así
+      fcLabels = forecast.map(d => d.date);
+      fcValues = forecast.map(d => d.forecast_net_revenue);
+    }
+
+    const mae = {{ mae_test if mae_test is not none else "null" }};
+
+    let upper = [];
+    let lower = [];
+
+    if (forecast && mae) {
+      // banda constante ±MAE
+      upper = fcValues.map(v => v + mae);
+      lower = fcValues.map(v => Math.max(0, v - mae));
+    }
+
+    const upperSeries = Array(histLabels.length).fill(null).concat(upper);
+    const lowerSeries = Array(histLabels.length).fill(null).concat(lower);
+
+    const allLabels = forecast ? histLabels.concat(fcLabels) : histLabels;
+
+    // para que se vea "cortada" la línea: metemos nulls
+    const histSeries = histValues.concat(forecast ? Array(fcLabels.length).fill(null) : []);
+    const fcSeries = (forecast ? Array(histLabels.length).fill(null).concat(fcValues) : []);
+
+    const lastHistDate = histLabels[histLabels.length - 1];
+
+    // plugin simple para línea vertical del “inicio forecast”
+    const vlinePlugin = {
+      id: 'vline',
+      afterDraw: (chart) => {
+        if (!forecast) return;
+        const {ctx, chartArea, scales} = chart;
+        const xScale = scales.x;
+
+        const xIndex = allLabels.indexOf(lastHistDate);
+        if (xIndex < 0) return;
+
+        const x = xScale.getPixelForValue(xIndex);
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(x, chartArea.top);
+        ctx.lineTo(x, chartArea.bottom);
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(107,114,128,0.7)';
+        ctx.setLineDash([6,4]);
+        ctx.stroke();
+        ctx.restore();
+      }
+    };
+
+    new Chart(document.getElementById("revChart"), {
+      type: "line",
+      data: {
+        labels: allLabels,
+        datasets: [
+          { label: "Histórico", data: histSeries, tension: 0.2, pointRadius: 0 },
+
+          ...(forecast ? [{
+            label: "Forecast",
+            data: fcSeries,
+            tension: 0.2,
+            pointRadius: 0
+          }] : []),
+
+          ...(forecast && mae ? [
+            // IMPORTANTE: primero upper y luego lower con fill "-1" para rellenar entre ambos
+            { label: "Upper (±MAE)", data: upperSeries, tension: 0.2, pointRadius: 0, borderWidth: 0, fill: false },
+            { label: "Lower (±MAE)", data: lowerSeries, tension: 0.2, pointRadius: 0, borderWidth: 0, fill: "-1" }
+          ] : [])
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true },
+          tooltip: { mode: "index", intersect: false }
+        },
+        interaction: { mode: "index", intersect: false },
+        scales: { x: { ticks: { maxTicksLimit: 12 } } }
+      },
+      plugins: [vlinePlugin]
+    });
+  </script>
+{% endif %}
+
+
+{% if forecast %}
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Tienda</th>
+        <th>Canal</th>
+        <th>Forecast net_revenue</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in forecast %}
+        <tr>
+          <td>{{ r.date }}</td>
+          <td>{{ r.store_id }}</td>
+          <td>{{ r.channel }}</td>
+          <td>{{ r.forecast_net_revenue }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+
+{% endblock %}
